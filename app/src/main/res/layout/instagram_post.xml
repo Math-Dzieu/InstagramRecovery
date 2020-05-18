@@ -26,7 +26,7 @@
         app:layout_constraintTop_toBottomOf="@+id/InstaImage" />
 
     <Button
-        android:id="@+id/BTN_Back"
+        android:id="@+id/BackButton"
         android:layout_width="100dp"
         android:layout_height="50dp"
         app:layout_constraintStart_toStartOf="parent"

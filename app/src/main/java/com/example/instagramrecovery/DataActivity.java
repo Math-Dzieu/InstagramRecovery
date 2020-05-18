@@ -1,5 +1,6 @@
 package com.example.instagramrecovery;
 
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.util.Log;
@@ -113,12 +114,23 @@ public class DataActivity extends AppCompatActivity {
     private void showDataList(List<Data> dataList) {
         recyclerView = (RecyclerView) findViewById(R.id.recycler_view);
         recyclerView.setHasFixedSize(true);
-        // use a linear layout manager
         layoutManager = new GridLayoutManager(this, 2);
         recyclerView.setLayoutManager(layoutManager);
 
-        mAdapter = new ListAdapter(dataList);
+        mAdapter = new ListAdapter(dataList, new ListAdapter.OnItemClickListener() {
+            @Override
+            public void onItemClick(Data item) {
+                navigateToDetails(item);
+            }
+        });
         recyclerView.setAdapter(mAdapter);
+    }
+
+    private void navigateToDetails(Data item) {
+        Intent intent = new Intent(getApplicationContext(), InstagramPost.class);
+        intent.putExtra("PicUrl", item.getMedia_url());
+        intent.putExtra("Comment", item.getCaption());
+        getApplicationContext().startActivity(intent);
     }
 
     private List<Data> getDataFromCache() {
