@@ -11,7 +11,9 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
+import com.google.gson.reflect.TypeToken;
 
+import java.lang.reflect.Type;
 import java.util.List;
 
 import retrofit2.Call;
@@ -50,8 +52,14 @@ public class DataActivity extends AppCompatActivity {
         gson = new GsonBuilder()
                 .setLenient()
                 .create();
-        List<Data> dataList;
-        getTheUserData();
+
+        List<Data> dataList = getDataFromCache();
+        if(dataList != null){
+            showDataList(dataList);
+        }else{
+            getTheUserData();
+        }
+
     }
 
 
@@ -72,9 +80,11 @@ public class DataActivity extends AppCompatActivity {
                 if(response.isSuccessful()&&response.body() != null){
                     Log.i("MyLog", "response.raw().request().url() : " + response.raw().request().url());
                     List<Data> dataList = response.body().getData();
+                    saveDataList(dataList);
+                    Log.i("MyLog", "saveList Successful");
                     showDataList(dataList);
                     Log.i("MyLog", "showList Successful");
-                }
+                                    }
                 else{
                     Log.i("MyLog", "response.raw().request().url() : " + response.raw().request().url());
                     Log.i("MyLog", "isn't Successful + response : " + response.body());
@@ -91,6 +101,15 @@ public class DataActivity extends AppCompatActivity {
         });
     }
 
+    private void saveDataList(List<Data> dataList) {
+        String jsonString = gson.toJson(dataList);
+        sharedPreferences
+                .edit()
+                .putString("jsonDataList", jsonString)
+                .apply();
+        Toast.makeText(getApplicationContext(), "List Saved", Toast.LENGTH_SHORT).show();
+    }
+
     private void showDataList(List<Data> dataList) {
         recyclerView = (RecyclerView) findViewById(R.id.recycler_view);
         recyclerView.setHasFixedSize(true);
@@ -100,6 +119,17 @@ public class DataActivity extends AppCompatActivity {
 
         mAdapter = new ListAdapter(dataList);
         recyclerView.setAdapter(mAdapter);
+    }
+
+    private List<Data> getDataFromCache() {
+        String jsonData = sharedPreferences.getString("jsonDataList", null);
+
+        if (jsonData == null){
+            return null;
+        }else{
+            Type listType = new TypeToken<List<Data>>(){}.getType();
+            return gson.fromJson(jsonData, listType);
+        }
     }
 
     private void getTheAccessToken(){
