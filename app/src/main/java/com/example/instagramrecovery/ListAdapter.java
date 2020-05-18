@@ -4,7 +4,6 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
-import android.widget.TextView;
 
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -12,24 +11,26 @@ import java.util.List;
 
 public class ListAdapter extends RecyclerView.Adapter<ListAdapter.ViewHolder> {
     private List<Data> values;
+    private OnItemClickListener listener;
 
-    public ListAdapter(List<Data> values) {
-        this.values = values;
+    public interface OnItemClickListener {
+        void onItemClick(Data item);
+    }
+
+    public ListAdapter(List<Data> myDataset, OnItemClickListener listener) {
+        this.values = myDataset;
+        this.listener = listener;
     }
 
     class ViewHolder extends RecyclerView.ViewHolder {
 
         ImageView imgHeader;
-        TextView txtHeader;
-        TextView txtFooter;
         View layout;
 
         ViewHolder(View v) {
             super(v);
             layout = v;
             imgHeader = (ImageView) v.findViewById(R.id.icon);
-            txtHeader = (TextView) v.findViewById(R.id.firstLine);
-            txtFooter = (TextView) v.findViewById(R.id.secondLine);
         }
     }
 
@@ -60,16 +61,11 @@ public class ListAdapter extends RecyclerView.Adapter<ListAdapter.ViewHolder> {
     @Override
     public void onBindViewHolder(ViewHolder holder, final int position) {
         final Data currentData = values.get(position);
-        holder.txtHeader.setText(currentData.getMedia_url());
-        holder.txtFooter.setText("Footer: " + currentData.getCaption());
-        holder.txtHeader.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                remove(position);
+        holder.itemView.setOnClickListener(new View.OnClickListener() {
+            @Override public void onClick(View v) {
+                listener.onItemClick(currentData);
             }
         });
-
-
     }
 
     @Override
