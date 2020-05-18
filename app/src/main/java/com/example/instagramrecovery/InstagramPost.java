@@ -10,6 +10,8 @@ import android.widget.TextView;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.squareup.picasso.Picasso;
+
 public class InstagramPost extends AppCompatActivity {
     public ImageView picture;
     public TextView comment;
@@ -27,6 +29,7 @@ public class InstagramPost extends AppCompatActivity {
         picture = (ImageView) findViewById(R.id.InstaImage);
         comment = (TextView) findViewById(R.id.InstaComment);
 
+        Picasso.get().load(PicUrl).into(picture);
         comment.setText(Comment);
 
         btn_back.setOnClickListener(new View.OnClickListener() {
