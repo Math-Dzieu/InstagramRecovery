@@ -4,6 +4,8 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
+import android.widget.Button;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -41,11 +43,14 @@ public class DataActivity extends AppCompatActivity {
     private ListAdapter mAdapter;
     private RecyclerView.LayoutManager layoutManager;
 
+    public Button btn_refresh;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_data);
-
+        btn_refresh = (Button) findViewById(R.id.RefreshButton);
+        sharedPreferences = getBaseContext().getSharedPreferences("userData", MODE_PRIVATE);
         accessToken = sharedPreferences.getString("code", null);
         Log.i("MyLog", "accessToken " + accessToken );
         getTheAccessToken();
@@ -60,6 +65,15 @@ public class DataActivity extends AppCompatActivity {
         }else{
             getTheUserData();
         }
+
+        btn_refresh.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                getTheUserData();
+                List<Data> dataList = getDataFromCache();
+                showDataList(dataList);
+            }
+        });
 
     }
 
