@@ -30,6 +30,7 @@
                     tools:ignore="AppLinkUrlError" />
             </intent-filter>
         </activity>
+        <activity android:name=".InstagramPost"/>
     </application>
 
 </manifest>
