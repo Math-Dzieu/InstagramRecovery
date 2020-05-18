@@ -30,6 +30,7 @@ public class DataActivity extends AppCompatActivity {
         accessToken = sharedPreferences.getString("code", null);
         Log.i("MyLog", "accessToken " + accessToken );
         getTheAccessToken();
+
     }
 
 
