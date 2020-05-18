@@ -8,8 +8,7 @@ import android.view.View;
 import android.webkit.WebView;
 import android.widget.Button;
 
-public class MainActivity extends AppCompatActivity {
-
+public class LoginActivity extends AppCompatActivity {
 
     Button btn_login;
     WebView webview;
@@ -26,6 +25,7 @@ public class MainActivity extends AppCompatActivity {
         mContext = getApplicationContext();
 
         mWebViewClient = new MyWebViewClient(linkUrl, mContext);
+        webview.setWebViewClient(mWebViewClient);
 
         btn_login.setOnClickListener(new Button.OnClickListener() {
             @Override
@@ -37,7 +37,6 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void goUrl() {
-        //The webview must connect to a desired link so that it links to a link with an access code to get the instagram token.
         webview.getSettings().setLoadsImagesAutomatically(true);
         webview.getSettings().setJavaScriptEnabled(true);
         webview.setScrollBarStyle(View.SCROLLBARS_INSIDE_OVERLAY);
