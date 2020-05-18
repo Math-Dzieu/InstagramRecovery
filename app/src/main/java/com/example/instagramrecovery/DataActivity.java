@@ -32,7 +32,6 @@ public class DataActivity extends AppCompatActivity {
     public SharedPreferences sharedPreferences;
     public String accessToken;
     public String userId;
-    public GetToken interfaceGetToken;
 
     public String app_id = "598355621029954";
     public String app_secret = "9e1642c8c88dcdeada90d8505e3903e2";
@@ -44,6 +43,10 @@ public class DataActivity extends AppCompatActivity {
     private RecyclerView.LayoutManager layoutManager;
 
     public Button btn_refresh;
+
+    Retrofit.Builder builder = new Retrofit.Builder().baseUrl("https://api.instagram.com").addConverterFactory(GsonConverterFactory.create());
+    Retrofit retrofit = builder.build();
+    GetToken interfaceGetToken = retrofit.create(GetToken.class);
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
