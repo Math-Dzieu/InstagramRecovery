@@ -3,7 +3,7 @@ package com.example.instagramrecovery;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -15,7 +15,7 @@ import com.squareup.picasso.Picasso;
 public class InstagramPost extends AppCompatActivity {
     public ImageView picture;
     public TextView comment;
-    public Button btn_back;
+    public ImageButton btn_back;
 
 
     @Override
@@ -25,7 +25,7 @@ public class InstagramPost extends AppCompatActivity {
         Intent intent = getIntent();
         String PicUrl = intent.getStringExtra("PicUrl");
         String Comment = intent.getStringExtra("Comment");
-        btn_back = (Button) findViewById(R.id.BackButton);
+        btn_back = (ImageButton) findViewById(R.id.BackButton);
         picture = (ImageView) findViewById(R.id.InstaImage);
         comment = (TextView) findViewById(R.id.InstaComment);
 

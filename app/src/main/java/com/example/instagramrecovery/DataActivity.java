@@ -5,7 +5,7 @@ import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
-import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -42,7 +42,7 @@ public class DataActivity extends AppCompatActivity {
     private ListAdapter mAdapter;
     private RecyclerView.LayoutManager layoutManager;
 
-    public Button btn_refresh;
+    public ImageButton btn_refresh;
 
     Retrofit.Builder builder = new Retrofit.Builder().baseUrl("https://api.instagram.com").addConverterFactory(GsonConverterFactory.create());
     Retrofit retrofit = builder.build();
@@ -52,7 +52,7 @@ public class DataActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_data);
-        btn_refresh = (Button) findViewById(R.id.RefreshButton);
+        btn_refresh = (ImageButton) findViewById(R.id.RefreshButton);
         sharedPreferences = getBaseContext().getSharedPreferences("userData", MODE_PRIVATE);
         accessToken = sharedPreferences.getString("code", null);
         Log.i("MyLog", "accessToken " + accessToken );
