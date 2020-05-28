@@ -1,4 +1,4 @@
-package com.example.instagramrecovery;
+package com.example.instagramrecovery.presentation.model;
 
 import android.app.AlertDialog;
 import android.content.ContentResolver;

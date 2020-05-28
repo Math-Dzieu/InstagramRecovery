@@ -1,4 +1,4 @@
-package com.example.instagramrecovery;
+package com.example.instagramrecovery.presentation.model;
 
 public class UserAndToken {
     private String access_token;

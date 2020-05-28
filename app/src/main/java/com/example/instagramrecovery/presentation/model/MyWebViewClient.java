@@ -1,4 +1,4 @@
-package com.example.instagramrecovery;
+package com.example.instagramrecovery.presentation.model;
 
 import android.content.Context;
 import android.content.Intent;
@@ -8,6 +8,8 @@ import android.util.Log;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
 import android.widget.Toast;
+
+import com.example.instagramrecovery.presentation.view.DataActivity;
 
 public class MyWebViewClient extends WebViewClient {
 

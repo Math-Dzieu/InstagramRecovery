@@ -1,4 +1,4 @@
-package com.example.instagramrecovery;
+package com.example.instagramrecovery.presentation.view;
 
 import android.Manifest;
 import android.app.AlertDialog;
@@ -18,6 +18,8 @@ import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
 
+import com.example.instagramrecovery.R;
+import com.example.instagramrecovery.presentation.model.SaveImageHelper;
 import com.squareup.picasso.Picasso;
 
 import java.util.UUID;

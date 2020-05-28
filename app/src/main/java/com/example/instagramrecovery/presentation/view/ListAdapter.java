@@ -1,4 +1,4 @@
-package com.example.instagramrecovery;
+package com.example.instagramrecovery.presentation.view;
 
 import android.view.LayoutInflater;
 import android.view.View;
@@ -7,6 +7,8 @@ import android.widget.ImageView;
 
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.instagramrecovery.R;
+import com.example.instagramrecovery.presentation.model.Data;
 import com.squareup.picasso.Picasso;
 
 import java.util.List;

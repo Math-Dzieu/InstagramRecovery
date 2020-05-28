@@ -1,4 +1,4 @@
-package com.example.instagramrecovery;
+package com.example.instagramrecovery.presentation.view;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -7,6 +7,9 @@ import android.os.Bundle;
 import android.view.View;
 import android.webkit.WebView;
 import android.widget.Button;
+
+import com.example.instagramrecovery.presentation.model.MyWebViewClient;
+import com.example.instagramrecovery.R;
 
 public class LoginActivity extends AppCompatActivity {
 

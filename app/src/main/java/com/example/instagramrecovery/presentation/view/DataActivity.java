@@ -1,4 +1,4 @@
-package com.example.instagramrecovery;
+package com.example.instagramrecovery.presentation.view;
 
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -12,6 +12,12 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.instagramrecovery.R;
+import com.example.instagramrecovery.data.GetToken;
+import com.example.instagramrecovery.data.GetUserData;
+import com.example.instagramrecovery.presentation.model.Data;
+import com.example.instagramrecovery.presentation.model.RestDataResponse;
+import com.example.instagramrecovery.presentation.model.UserAndToken;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.google.gson.reflect.TypeToken;
