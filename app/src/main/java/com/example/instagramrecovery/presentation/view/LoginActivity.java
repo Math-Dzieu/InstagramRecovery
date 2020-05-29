@@ -8,7 +8,7 @@ import android.view.View;
 import android.webkit.WebView;
 import android.widget.Button;
 
-import com.example.instagramrecovery.presentation.model.MyWebViewClient;
+import com.example.instagramrecovery.MyWebViewClient;
 import com.example.instagramrecovery.R;
 
 public class LoginActivity extends AppCompatActivity {

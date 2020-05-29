@@ -1,4 +1,4 @@
-package com.example.instagramrecovery.presentation.model;
+package com.example.instagramrecovery;
 
 import android.content.Context;
 import android.content.Intent;
