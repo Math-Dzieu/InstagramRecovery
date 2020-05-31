@@ -1,31 +1,21 @@
 package com.example.instagramrecovery.presentation.view;
 
-import android.Manifest;
-import android.app.AlertDialog;
 import android.content.Intent;
-import android.content.pm.PackageManager;
 import android.os.Build;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
 
-import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.app.ActivityCompat;
 
 import com.example.instagramrecovery.R;
-import com.example.instagramrecovery.SaveImageHelper;
 import com.example.instagramrecovery.presentation.controller.InstagramPostController;
 import com.squareup.picasso.Picasso;
 
-import java.util.UUID;
-
-import dmax.dialog.SpotsDialog;
 
 public class InstagramPost extends AppCompatActivity {
     public ImageView picture;

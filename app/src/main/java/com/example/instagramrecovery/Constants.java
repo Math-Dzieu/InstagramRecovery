@@ -1,4 +1,4 @@
-package com.example.instagramrecovery.presentation;
+package com.example.instagramrecovery;
 
 public class Constants {
     public static String BASE_URL1 = "https://api.instagram.com";

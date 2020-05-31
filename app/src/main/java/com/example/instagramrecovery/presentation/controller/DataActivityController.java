@@ -7,7 +7,7 @@ import android.widget.Toast;
 
 import com.example.instagramrecovery.data.GetToken;
 import com.example.instagramrecovery.data.GetUserData;
-import com.example.instagramrecovery.presentation.Constants;
+import com.example.instagramrecovery.Constants;
 import com.example.instagramrecovery.presentation.model.Data;
 import com.example.instagramrecovery.presentation.model.RestDataResponse;
 import com.example.instagramrecovery.presentation.model.UserAndToken;
