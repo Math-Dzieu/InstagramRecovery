@@ -9,6 +9,8 @@ import android.webkit.WebView;
 import android.webkit.WebViewClient;
 import android.widget.Toast;
 
+import com.example.instagramrecovery.presentation.view.DataActivity;
+
 public class MyWebViewClient extends WebViewClient {
 
     public Context mContext;

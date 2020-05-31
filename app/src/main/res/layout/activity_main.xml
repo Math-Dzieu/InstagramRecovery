@@ -5,7 +5,7 @@
     android:background="@drawable/insta_background"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".LoginActivity">
+    tools:context=".presentation.view.LoginActivity">
 
     <Button
         android:id="@+id/LoginButton"

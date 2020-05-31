@@ -5,7 +5,7 @@
     android:background="@drawable/insta_background"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".DataActivity">
+    tools:context=".presentation.view.DataActivity">
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recycler_view"

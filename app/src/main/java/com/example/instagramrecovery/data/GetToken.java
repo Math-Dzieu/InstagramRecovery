@@ -1,4 +1,6 @@
-package com.example.instagramrecovery;
+package com.example.instagramrecovery.data;
+
+import com.example.instagramrecovery.presentation.model.UserAndToken;
 
 import retrofit2.Call;
 import retrofit2.http.Field;
