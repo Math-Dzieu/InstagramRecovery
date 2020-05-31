@@ -1,5 +1,8 @@
 package com.example.instagramrecovery.presentation.model;
 
+/**
+ * This class permit to get the user id and access token from the redirect uri
+ */
 public class UserAndToken {
     private String access_token;
     private String user_id;

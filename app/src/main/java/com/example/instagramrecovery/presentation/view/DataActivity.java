@@ -16,7 +16,9 @@ import com.google.gson.GsonBuilder;
 
 import java.util.List;
 
-
+/**
+ *
+ */
 public class DataActivity extends AppCompatActivity {
 
     private RecyclerView recyclerView;
@@ -26,7 +28,9 @@ public class DataActivity extends AppCompatActivity {
     public ImageButton btn_refresh;
     public DataActivityController dataActivityController;
 
-
+    /**
+     * When the activity start, defined all element int the activity, and run function from the controller
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -45,6 +49,10 @@ public class DataActivity extends AppCompatActivity {
 
     }
 
+    /**
+     * Show the list of data recovered from the request to the instagram api
+     * @param dataList list of data
+     */
     public void showDataList(List<Data> dataList) {
         recyclerView = (RecyclerView) findViewById(R.id.recycler_view);
         recyclerView.setHasFixedSize(true);

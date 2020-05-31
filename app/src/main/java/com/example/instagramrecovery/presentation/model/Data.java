@@ -1,5 +1,8 @@
 package com.example.instagramrecovery.presentation.model;
 
+/**
+ * This class permit to get all data from the json
+ */
 public class Data {
     private String caption;
     private String id;
@@ -7,6 +10,7 @@ public class Data {
     private String media_url;
     private String username;
     private String timestamp;
+
 
     public String getCaption() {
         return caption;

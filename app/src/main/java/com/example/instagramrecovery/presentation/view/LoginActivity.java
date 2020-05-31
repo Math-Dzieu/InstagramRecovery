@@ -12,6 +12,9 @@ import com.example.instagramrecovery.MyWebViewClient;
 import com.example.instagramrecovery.R;
 import com.example.instagramrecovery.presentation.controller.LoginActivityController;
 
+/**
+ * This activity is the loging activity, it's permit to connect at instagram and be redirect on other link with the access token and user id to get all data from the user
+ */
 public class LoginActivity extends AppCompatActivity {
 
     Button btn_login;
@@ -22,6 +25,9 @@ public class LoginActivity extends AppCompatActivity {
     public MyWebViewClient mWebViewClient;
     public LoginActivityController loginActivityController;
 
+    /**
+     * When the activity start, defined all element int the activity and run function from the controller
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -52,6 +58,9 @@ public class LoginActivity extends AppCompatActivity {
 
     }
 
+    /**
+     * setting the webview and load the url
+     */
     private void goUrl() {
         webview.getSettings().setLoadsImagesAutomatically(true);
         webview.getSettings().setJavaScriptEnabled(true);

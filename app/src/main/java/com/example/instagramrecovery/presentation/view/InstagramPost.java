@@ -16,7 +16,9 @@ import com.example.instagramrecovery.R;
 import com.example.instagramrecovery.presentation.controller.InstagramPostController;
 import com.squareup.picasso.Picasso;
 
-
+/**
+ * This activity is the activity who shows the details of the item you clicked on
+ */
 public class InstagramPost extends AppCompatActivity {
     public ImageView picture;
     public TextView comment;
@@ -27,7 +29,9 @@ public class InstagramPost extends AppCompatActivity {
     public String Comment;
 
 
-
+    /**
+     * When the activity start, defined all element int the activity, recovered Extra data put during the creation of the activity and run function from the controller
+     */
     @RequiresApi(api = Build.VERSION_CODES.M)
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -65,18 +69,34 @@ public class InstagramPost extends AppCompatActivity {
         });
     }
 
+    /**
+     * getter of the pic url
+     * @return the pic url
+     */
     public String getPicUrl() {
         return PicUrl;
     }
 
+    /**
+     * setter of the pic url
+     * @param picUrl the pic url
+     */
     public void setPicUrl(String picUrl) {
         PicUrl = picUrl;
     }
 
+    /**
+     * getter of the comment
+     * @return the comment
+     */
     public String getComment() {
         return Comment;
     }
 
+    /**
+     * setter of the comment
+     * @param comment the comment
+     */
     public void setComment(String comment) {
         Comment = comment;
     }

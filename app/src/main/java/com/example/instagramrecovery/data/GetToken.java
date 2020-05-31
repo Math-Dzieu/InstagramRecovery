@@ -7,6 +7,10 @@ import retrofit2.http.Field;
 import retrofit2.http.FormUrlEncoded;
 import retrofit2.http.POST;
 
+/**
+ * The purpose of this interface is to create a POST request to the instagram api in order to be redirected to a desired link with an access token.
+ * This token will then be used for the rest of the requests.
+ */
 public interface GetToken {
     @FormUrlEncoded
     @POST("/oauth/access_token/")

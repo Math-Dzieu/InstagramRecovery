@@ -1,5 +1,8 @@
 package com.example.instagramrecovery;
 
+/**
+ * Constant variable of this application
+ */
 public class Constants {
     public static String BASE_URL1 = "https://api.instagram.com";
     public static String BASE_URL2 = "https://graph.instagram.com";

@@ -18,15 +18,26 @@ import java.util.UUID;
 
 import dmax.dialog.SpotsDialog;
 
+/**
+ * Controller from the InstagramPost View :
+ * Includes all the functions required for download the pic, and authorize the write external storage.
+ */
 public class InstagramPostController {
 
     private final int PERMISSION_REQUEST_CODE = 1000;
     private InstagramPost view;
 
+    /**
+     * Constructor of the InstagramPostController
+     * @param instagramPost : view of the activity
+     */
     public InstagramPostController(InstagramPost instagramPost) {
         this.view = instagramPost;
     }
 
+    /**
+     * Controller onStart : check the permission for write in storage
+     */
     @RequiresApi(api = Build.VERSION_CODES.M)
     public void onStart(){
         if(ActivityCompat.checkSelfPermission(view, Manifest.permission.WRITE_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED){
@@ -34,6 +45,9 @@ public class InstagramPostController {
         }
     }
 
+    /**
+     * Check if the permission to write on storage is granted, if it's granted download the picture on gallery and disp a message on the screen
+     */
     @RequiresApi(api = Build.VERSION_CODES.M)
     public void onDownloadButtonClick(){
         if(ActivityCompat.checkSelfPermission(view, Manifest.permission.WRITE_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED){

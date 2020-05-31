@@ -13,6 +13,11 @@ import com.squareup.picasso.Picasso;
 
 import java.util.List;
 
+/**
+ * ListAdapter from this tutoriel
+ * https://www.vogella.com/tutorials/AndroidRecyclerView/article.html#exercise-using-recyclerview-in-a-new-android-application
+ * Adding OnItemClickListener to get new activity after a click on an item from the recycler view
+ */
 public class ListAdapter extends RecyclerView.Adapter<ListAdapter.ViewHolder> {
     private List<Data> values;
     private OnItemClickListener listener;

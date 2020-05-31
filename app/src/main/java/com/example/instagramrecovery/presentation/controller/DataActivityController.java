@@ -28,6 +28,10 @@ import retrofit2.converter.gson.GsonConverterFactory;
 
 import static android.content.Context.MODE_PRIVATE;
 
+/**
+ * Controller from the DataActivity View :
+ * Includes all the functions required for communication with the instagram api.
+ */
 public class DataActivityController {
     public SharedPreferences sharedPreferences;
     public String accessToken;
@@ -35,12 +39,21 @@ public class DataActivityController {
     public String userId;
     public DataActivity view;
 
+    /**
+     * Constructor of the DataActivityController
+     * @param dataActivity : view of the activity
+     * @param sharedPreferences : shared preference of the activity
+     * @param gson : create new gson
+     */
     public DataActivityController(DataActivity dataActivity, SharedPreferences sharedPreferences, Gson gson) {
         this.view = dataActivity;
         this.sharedPreferences = sharedPreferences;
         this.gson = gson;
     }
 
+    /**
+     * Controller onStart : Recover data in cache  and check if the data from the cache is null
+     */
     public void onStart(){
         sharedPreferences = view.getBaseContext().getSharedPreferences("userData", MODE_PRIVATE);
         accessToken = sharedPreferences.getString("code", null);
@@ -59,12 +72,19 @@ public class DataActivityController {
         }
     }
 
+    /**
+     * When the user click on the refresh button : get the user data, get the new list with last data and show the list
+     */
     public void onItemClick(){
         getTheUserData();
         List<Data> dataList = getDataFromCache();
         view.showDataList(dataList);
     }
 
+
+    /**
+     * Function who use the GET request to get necessary information for the application. All data are saved in data list
+     */
     public void getTheUserData() {
         String typeData = "caption,id,media_type,media_url,username,timestamp";
         String accessToken = sharedPreferences.getString("access_token", null);
@@ -104,6 +124,10 @@ public class DataActivityController {
     }
 
 
+    /**
+     * Save the list in cache : sharedpreference
+     * @param dataList list recovered after the request
+     */
     private void saveDataList(List<Data> dataList) {
         String jsonString = gson.toJson(dataList);
         sharedPreferences
@@ -113,6 +137,10 @@ public class DataActivityController {
         Toast.makeText(view.getApplicationContext(), "List Saved", Toast.LENGTH_SHORT).show();
     }
 
+    /**
+     * Recovered data from the cache
+     * @return data from cache
+     */
     public List<Data> getDataFromCache() {
         String jsonData = sharedPreferences.getString("jsonDataList", null);
 
@@ -124,6 +152,9 @@ public class DataActivityController {
         }
     }
 
+    /**
+     * Function who use the POST request to get the access token and user id for the other next request
+     */
     private void getTheAccessToken(){
         Retrofit.Builder builder = new Retrofit.Builder()
                 .baseUrl(Constants.BASE_URL1)
@@ -156,7 +187,11 @@ public class DataActivityController {
         });
     }
 
-
+    /**
+     * This function save data from the redirect uri. This information are mandatory for the next request
+     * @param token access token from the redirect_uri
+     * @param id user id from the redirect id
+     */
     public void saveUserIdAccessToken(String token, String id){
         Log.i("MyLog", "token : " + token);
         Log.i("MyLog", "id : " + id);
@@ -167,23 +202,42 @@ public class DataActivityController {
                 .apply();
     }
 
+    /**
+     * getter for the access token
+     * @return the access token
+     */
     public String getAccessToken() {
         return accessToken;
     }
 
+    /**
+     * setter for the access token
+     * @param accessToken the access token
+     */
     public void setAccessToken(String accessToken) {
         this.accessToken = accessToken;
     }
 
+    /**
+     * getter for the user Id
+     * @return the user id
+     */
     public String getUserId() {
         return userId;
     }
 
+    /**
+     * setter for the user Id
+     * @param userId
+     */
     public void setUserId(String userId) {
         this.userId = userId;
     }
 
-
+    /**
+     * Opens a new activity based on the selected item.
+     * @param item current value when you click
+     */
     public void navigateToDetails(Data item) {
         Intent intent = new Intent(view.getApplicationContext(), InstagramPost.class);
         intent.putExtra("PicUrl", item.getMedia_url());

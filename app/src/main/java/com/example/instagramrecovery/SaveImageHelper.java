@@ -12,7 +12,10 @@ import com.squareup.picasso.Target;
 
 import java.lang.ref.WeakReference;
 
-
+/**
+ * This class has been retrieved from the internet in order to save an image to the phone's internal storage.
+ * The link of this tutorial will soon be put in this space
+ */
 public class SaveImageHelper implements Target {
     private WeakReference<AlertDialog> alertDialogWeakReference;
     private WeakReference<ContentResolver> contentResolverWeakReference;

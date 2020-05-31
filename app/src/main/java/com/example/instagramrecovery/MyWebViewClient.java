@@ -11,6 +11,10 @@ import android.widget.Toast;
 
 import com.example.instagramrecovery.presentation.view.DataActivity;
 
+/**
+ * MyWebViewClient class which is modified in order to have logs about what happens during the application and to retrieve the information in the redirect link.
+ * Once the information is retrieved, activity setting to display the retrieved data
+ */
 public class MyWebViewClient extends WebViewClient {
 
     public Context mContext;
