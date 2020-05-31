@@ -20,6 +20,7 @@ import androidx.core.app.ActivityCompat;
 
 import com.example.instagramrecovery.R;
 import com.example.instagramrecovery.SaveImageHelper;
+import com.example.instagramrecovery.presentation.controller.InstagramPostController;
 import com.squareup.picasso.Picasso;
 
 import java.util.UUID;
@@ -31,26 +32,11 @@ public class InstagramPost extends AppCompatActivity {
     public TextView comment;
     public ImageButton btn_back;
     public ImageButton btn_download;
-    private final int PERMISSION_REQUEST_CODE = 1000;
-
+    public InstagramPostController instagramPostController;
     public String PicUrl;
     public String Comment;
 
-    public void onRequestPermissionResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults){
-        super.onRequestPermissionsResult(requestCode, permissions, grantResults);
-        switch (requestCode){
-            case PERMISSION_REQUEST_CODE:
-            {
-                if(grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED){
-                    Toast.makeText(this, "Permission Granted", Toast.LENGTH_SHORT).show();
-                }
-                else{
-                    Toast.makeText(this, "Permission Denied", Toast.LENGTH_SHORT).show();
-                }
-            }
-            break;
-        }
-    }
+
 
     @RequiresApi(api = Build.VERSION_CODES.M)
     @Override
@@ -68,9 +54,8 @@ public class InstagramPost extends AppCompatActivity {
         picture = (ImageView) findViewById(R.id.InstaImage);
         comment = (TextView) findViewById(R.id.InstaComment);
 
-        if(ActivityCompat.checkSelfPermission(this, Manifest.permission.WRITE_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED){
-            requestPermissions(new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE}, PERMISSION_REQUEST_CODE);
-        }
+        instagramPostController = new InstagramPostController(this);
+        instagramPostController.onStart();
 
         Picasso.get().load(PicUrl).into(picture);
         comment.setText(Comment);
@@ -85,22 +70,7 @@ public class InstagramPost extends AppCompatActivity {
         btn_download.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if(ActivityCompat.checkSelfPermission(InstagramPost.this, Manifest.permission.WRITE_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED){
-                    Toast.makeText(InstagramPost.this, "You should grant permission", Toast.LENGTH_SHORT).show();
-                    requestPermissions(new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE}, PERMISSION_REQUEST_CODE);
-                    return;
-                }
-                else{
-                    AlertDialog dialog = new SpotsDialog.Builder()
-                            .setContext(InstagramPost.this)
-                            .setMessage("Downloading")
-                            .build();
-                    dialog.show();
-                    dialog.setMessage("Downloading");
-
-                    String fileName = UUID.randomUUID().toString()+"jpg";
-                    Picasso.get().load(getPicUrl()).into(new SaveImageHelper(getBaseContext(), dialog, getApplicationContext().getContentResolver(), fileName, "Image description"));
-                }
+                instagramPostController.onDownloadButtonClick();
             }
         });
     }
