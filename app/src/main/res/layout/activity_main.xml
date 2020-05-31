@@ -9,13 +9,23 @@
 
     <Button
         android:id="@+id/LoginButton"
-        android:layout_width="match_parent"
+        android:layout_width="205dp"
         android:layout_height="50dp"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="25dp"
         android:background="@color/colorTransparent"
         android:text="Login"
         app:layout_constraintTop_toTopOf="parent"
         tools:layout_editor_absoluteX="0dp" />
+
+    <Button
+        android:id="@+id/PicButton"
+        android:layout_width="205dp"
+        android:layout_height="50dp"
+        android:layout_marginTop="25dp"
+        android:background="@color/colorTransparent"
+        android:text="Picture"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <WebView
         android:id="@+id/web_view"
